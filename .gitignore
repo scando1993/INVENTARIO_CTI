@@ -1,9 +1,4 @@
-.idea/
 .DS_Store
-platforms/
-hooks/
-plugins/
-www/node_modules/
-www/dist/
-www/npm-debug.log
-www/typings/
+.idea
+dist/
+node_modules/
