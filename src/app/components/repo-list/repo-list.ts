@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Github} from '../../services/github';
+import {InventarioApi} from '../../services/inventario_api';
 import {Observable} from 'rxjs/Observable';
 import {RouteParams, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
@@ -13,9 +13,9 @@ import {RouteParams, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 })
 export class RepoList {
   repos: Observable<any>;
-  constructor(public github: Github, public params: RouteParams) {}
+  constructor(public inventarioApi: InventarioApi, public params: RouteParams) {}
 
   ngOnInit() {
-    this.repos = this.github.getReposForOrg(this.params.get('org'));
+    this.repos = this.inventarioApi.getReposForOrg(this.params.get('kit'));
   }
 }

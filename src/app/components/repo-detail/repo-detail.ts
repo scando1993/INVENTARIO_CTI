@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouteParams, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Http} from '@angular/http';
-import {Github} from '../../services/github';
+import {InventarioApi} from '../../services/inventario_api';
 
 @Component({
   selector: 'repo-detail',
@@ -13,10 +13,10 @@ import {Github} from '../../services/github';
 })
 export class RepoDetail {
   repoDetails = {};
-  constructor(public routeParams: RouteParams, public github: Github) {}
+  constructor(public routeParams: RouteParams, public inventarioApi: InventarioApi) {}
 
   ngOnInit() {
-    this.github.getRepoForOrg(this.routeParams.get('org'), this.routeParams.get('name'))
+    this.inventarioApi.getRepoForOrg(this.routeParams.get('kit'), this.routeParams.get('item'))
       .subscribe(repoDetails => {
         this.repoDetails = repoDetails;
       });

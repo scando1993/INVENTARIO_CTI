@@ -16,7 +16,7 @@ import {Item} from './components/item/item'
 @RouteConfig([
   { path: '/home',       component: Home,        name: 'Home', useAsDefault: true },
   { path: '/about',      component: About,       name: 'About' },
-  { path: '/github/...', component: RepoBrowser, name: 'RepoBrowser' },
+  { path: '/kit/...', component: RepoBrowser, name: 'RepoBrowser' },
   { path: '/item', component: Item, name: 'Item'}
 ])
 export class SeedApp {

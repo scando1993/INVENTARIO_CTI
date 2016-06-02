@@ -1,15 +1,15 @@
-import {Component} from '../../../../node_modules/@angular/core';
-import {Router, RouteConfig, ROUTER_DIRECTIVES} from '../../../../node_modules/@angular/router-deprecated';
+import {Component} from '@angular/core';
+import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {RepoList} from '../repo-list/repo-list';
 import {RepoDetail} from '../repo-detail/repo-detail';
-import {Github} from '../../services/github';
+import {InventarioApi} from "../../services/inventario_api";
 
 @Component({
   selector: 'repo-browser',
   templateUrl: 'app/components/repo-browser/repo-browser.html',
   styleUrls: ['app/components/repo-browser/repo-browser.css'],
-  providers: [ Github ],
+  providers: [ InventarioApi ],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: []
 })
@@ -19,10 +19,10 @@ import {Github} from '../../services/github';
 ])
 export class RepoBrowser {
 
-  constructor(private router: Router, private github: Github) {}
+  constructor(private router: Router, private inventarioApi: InventarioApi) {}
 
   searchForOrg(orgName: string) {
-    this.github.getOrg(orgName)
+    this.inventarioApi.getOrg(orgName)
       .subscribe(({name}) => {
         console.log(name);
         this.router.navigate(['RepoList', {org: orgName}]);
